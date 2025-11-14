@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/camera-favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jinette Ramos Photography, Best photographer in Allentown, PA USA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      @font-face {
+        font-family: 'Fredericka the Great';
+        src: url('/fonts/FrederickatheGreat-Regular.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8f9fa;
+      }
+      
+      .fredericka-the-great-regular {
+        font-family: 'Fredericka the Great', serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      @keyframes flash-kf {
+        0%, 2%, 100% { opacity: 0; }
+        1% { opacity: 1; }
+      }
+      @keyframes polaroid-drop-kf {
+        0%, 1.9% { 
+          opacity: 0; 
+          transform: translateY(-10px); 
+        }
+        2% { 
+          opacity: 1; 
+          transform: translateY(0);
+          animation-timing-function: cubic-bezier(0.42, 0, 1, 1); /* ease-in for a falling effect */
+        }
+        37.7% { /* Polaroid is visible for ~3.77 seconds (35.7% of 10s) */
+          opacity: 1;
+          transform: translateY(90px);
+        }
+        37.8%, 100% { /* Disappear after falling */
+          opacity: 0; 
+          transform: translateY(90px); 
+        }
+      }
+      .camera-flash {
+        animation: flash-kf 10s infinite ease-out;
+      }
+      .polaroid-drop {
+        animation: polaroid-drop-kf 10s infinite ease-out;
+      }
+    </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.jsx"></script>
+  </body>
+</html>

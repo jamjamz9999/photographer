@@ -1,0 +1,449 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom fonts and typography */
+.fredericka-the-great-regular {
+  font-family: 'Fredericka the Great', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Hero and Layout Styles */
+.header {
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/images/header.png') center/cover no-repeat;
+  background-size: 125%;
+  animation: moveBackgroundSmooth 25s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Navigation Button Styles */
+.nav-button {
+  transition: all 0.3s ease-in-out;
+  background-color: transparent !important;
+  border-radius: 12px !important;
+  padding: 10px 5px !important;
+  gap: 5px !important;
+  margin: 0 5px !important;
+  filter: none;
+  color: currentColor;
+  opacity: 1 !important;
+  font-size: 1.1rem;
+}
+
+.nav-button:hover {
+  animation: none;
+  filter: none;
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 1) !important;
+  border-radius: 12px !important;
+  padding: 10px 19px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  opacity: 1 !important;
+  color: #000 !important;
+}
+
+.nav-button.active {
+  background-color: rgba(255, 255, 255, 1) !important;
+  border-radius: 12px !important;
+  padding: 10px 19px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  opacity: 1 !important;
+  color: #000 !important;
+}
+
+/* Portfolio Container */
+.portfolio-container {
+  transition: all 0.25s ease-in-out;
+  z-index: 20;
+}
+
+.portfolio-container:hover {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.10) !important;
+}
+
+.portfolio-container:hover .portfolio-text {
+  font-weight: bold;
+}
+
+/* Booking Container */
+.booking-container {
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+  filter: invert(1);
+}
+
+.booking-container:hover {
+  opacity: 1;
+  filter: invert(0);
+}
+
+.booking-container:hover .booking-text {
+  font-weight: bold;
+}
+
+/* Split Images */
+.split-images-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 0;
+  pointer-events: none;
+  background-color: white;
+}
+
+.split-image-left {
+  width: calc(50% - 10px);
+  height: 100%;
+  background: url('/images/JRP_0485.jpg') center/cover no-repeat;
+}
+
+.split-image-right {
+  width: calc(50% - 10px);
+  height: 100%;
+  background: url('/images/JRP_0501.jpg') center/cover no-repeat;
+}
+
+/* Gallery Styles */
+@keyframes breatheBrightness {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.10), rgba(0,0,0,0));
+  pointer-events: none;
+  opacity: 1;
+}
+
+.gallery-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  animation: breatheBrightness 6s ease-in-out infinite;
+  transition: transform 0.5s ease;
+}
+
+/* Animated Gradient Button */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gradient-btn {
+  background: linear-gradient(90deg, #7c3aed 0%, #3d1a5f 50%, #000000 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 2s ease infinite;
+  color: white;
+  border-radius: 12px;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  box-shadow: 0 18px 30px rgba(124,58,237,0.12), 0 6px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.animated-gradient-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 10px 18px rgba(236,72,153,0.10), 0 4px 8px rgba(124,58,237,0.06);
+}
+
+/* Icon Hover Effects */
+.gallery-icon:hover svg path,
+.gallery-icon:active svg path {
+  fill: #0066CC !important;
+}
+
+.contact-icon:hover svg path,
+.contact-icon:active svg path {
+  fill: #FF0000 !important;
+}
+
+.pricing-icon:hover svg path,
+.pricing-icon:active svg path {
+  fill: #00FF00 !important;
+}
+
+/* Social Icons */
+.social-icon {
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.social-icon:hover {
+  transform: scale(1.15);
+  background-color: rgba(0, 0, 0, 0.05);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.social-icon:active {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.social-icon svg {
+  transition: all 0.3s ease;
+  width: 18px;
+  height: 18px;
+}
+
+.social-icon:hover svg {
+  fill: currentColor;
+}
+
+/* Footer Social Icon */
+.footer-social-icon {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+  transition: filter 0.3s ease;
+}
+
+.footer-social-icon:hover,
+.footer-social-icon:active {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8)) brightness(1.25);
+}
+
+/* Animations */
+@keyframes scaleUp {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+@keyframes moveBackgroundSmooth {
+  0% { background-position: 0% 0%; }
+  15% { background-position: 20% 25%; }
+  30% { background-position: 40% 30%; }
+  45% { background-position: 10% 60%; }
+  60% { background-position: 50% 20%; }
+  75% { background-position: 30% 10%; }
+  90% { background-position: 60% 40%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes backgroundOpacity {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+@keyframes breathingFade {
+  0%, 65%, 100% { color: white; }
+  32.5% { color: rgba(200, 200, 200, 1); }
+}
+
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0.3;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Title Animation */
+.hero-title {
+  color: white;
+  animation: breathingFade 15s ease-in-out infinite;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Polaroid and Flash Animations */
+@keyframes flash-kf {
+  0%, 2%, 100% { opacity: 0; }
+  1% { opacity: 1; }
+}
+
+@keyframes polaroid-drop-kf {
+  0%, 1.9% { 
+    opacity: 0; 
+    transform: translateY(-10px); 
+  }
+  2% { 
+    opacity: 1; 
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.42, 0, 1, 1);
+  }
+  37.7% {
+    opacity: 1;
+    transform: translateY(90px);
+  }
+  37.8%, 100% {
+    opacity: 0; 
+    transform: translateY(90px); 
+  }
+}
+
+.camera-flash {
+  animation: flash-kf 10s infinite ease-out;
+}
+
+.polaroid-drop {
+  animation: polaroid-drop-kf 10s infinite ease-out;
+}
+
+/* Utility Classes */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.max-w-4xl {
+  max-width: 56rem;
+}
+
+.max-w-6xl {
+  max-width: 72rem;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.bg-gray-50 {
+  background-color: #f9fafb;
+}
+
+.bg-gray-100 {
+  background-color: #f3f4f6;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-gray-600 {
+  color: #4b5563;
+}
+
+.text-gray-800 {
+  color: #1f2937;
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.border {
+  border: 1px solid #e5e7eb;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-200 {
+  transition-duration: 200ms;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
