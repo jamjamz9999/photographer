@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jinette Ramos Photography</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+              serif: ['Merriweather', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+            },
+            colors: {
+              neutral: {
+                50: '#fafafa',
+                100: '#f5f5f5',
+                850: '#1f1f1f',
+                900: '#171717',
+                950: '#0a0a0a',
+              }
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-in-out forwards',
+              'slide-up': 'slideUp 0.5s ease-out forwards',
+              'streak-1': 'streak 15s linear infinite',
+              'streak-2': 'streak 23s linear infinite reverse',
+              'streak-3': 'streak 19s linear infinite',
+              'swirl-loop': 'swirl 20s linear infinite',
+              'pan-fast': 'pan 10s linear infinite',
+              'pan-explore': 'panExplore 15s linear infinite',
+              'breathe': 'breathe 6s ease-in-out infinite',
+              'float': 'float 18s ease-in-out infinite',
+              'drift': 'drift 25s linear infinite',
+              'spin-slow': 'spinSlow 30s linear infinite',
+              'wander-1': 'wander1 25s ease-in-out infinite alternate',
+              'wander-2': 'wander2 30s ease-in-out infinite alternate',
+              'wander-3': 'wander3 28s ease-in-out infinite alternate',
+              'gradient-x': 'gradient-x 8s ease infinite',
+              'shine-effect': 'shine 3s infinite',
+              'scroll': 'scroll 40s linear infinite',
+              'stars-move': 'starsMove 20s linear infinite',
+              'twinkle': 'twinkle 3s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              streak: {
+                '0%': { transform: 'translateX(-100%) rotate(-12deg)' },
+                '100%': { transform: 'translateX(150vw) rotate(-12deg)' },
+              },
+              swirl: {
+                '0%': { transform: 'scale(1.2) translate(0, 0) rotate(0deg)' },
+                '25%': { transform: 'scale(1.2) translate(-3%, 2%) rotate(2deg)' },
+                '50%': { transform: 'scale(1.2) translate(0, 5%) rotate(0deg)' },
+                '75%': { transform: 'scale(1.2) translate(3%, 2%) rotate(-2deg)' },
+                '100%': { transform: 'scale(1.2) translate(0, 0) rotate(0deg)' },
+              },
+              pan: {
+                '0%': { transform: 'scale(1.6) translate(0%, 0%)' },
+                '20%': { transform: 'scale(1.6) translate(-10%, -8%)' },
+                '40%': { transform: 'scale(1.6) translate(10%, -5%)' },
+                '60%': { transform: 'scale(1.6) translate(8%, 10%)' },
+                '80%': { transform: 'scale(1.6) translate(-8%, 8%)' },
+                '100%': { transform: 'scale(1.6) translate(0%, 0%)' },
+              },
+              panExplore: {
+                '0%': { transform: 'scale(1.2) translate(0%, 0%)' },
+                '25%': { transform: 'scale(1.2) translate(-15%, 10%)' },
+                '50%': { transform: 'scale(1.2) translate(-5%, -15%)' },
+                '75%': { transform: 'scale(1.2) translate(15%, -5%)' },
+                '100%': { transform: 'scale(1.2) translate(0%, 0%)' },
+              },
+              breathe: {
+                '0%, 100%': { filter: 'brightness(1)' },
+                '50%': { filter: 'brightness(0.5)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translate(0, 0) rotate(0deg)' },
+                '25%': { transform: 'translate(50px, -50px) rotate(5deg)' },
+                '50%': { transform: 'translate(20px, 50px) rotate(-5deg)' },
+                '75%': { transform: 'translate(-50px, 20px) rotate(2deg)' },
+              },
+              drift: {
+                '0%': { transform: 'translate(0, 0)' },
+                '100%': { transform: 'translate(-100px, -50px)' },
+              },
+              spinSlow: {
+                '0%': { transform: 'rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg)' },
+              },
+              wander1: {
+                '0%': { transform: 'translate(0, 0) rotate(0deg) scale(1)' },
+                '25%': { transform: 'translate(30vw, 10vh) rotate(90deg) scale(1.2)' },
+                '50%': { transform: 'translate(-10vw, 40vh) rotate(180deg) scale(0.8)' },
+                '75%': { transform: 'translate(20vw, -20vh) rotate(270deg) scale(1.1)' },
+                '100%': { transform: 'translate(0, 0) rotate(360deg) scale(1)' },
+              },
+              wander2: {
+                '0%': { transform: 'translate(0, 0) rotate(0deg)' },
+                '33%': { transform: 'translate(-20vw, 30vh) rotate(-60deg)' },
+                '66%': { transform: 'translate(40vw, -10vh) rotate(40deg)' },
+                '100%': { transform: 'translate(10vw, 10vh) rotate(0deg)' },
+              },
+              wander3: {
+                '0%': { transform: 'translate(0, 0) scale(1)' },
+                '50%': { transform: 'translate(-40vw, -30vh) scale(1.5)' },
+                '100%': { transform: 'translate(20vw, 40vh) scale(1)' },
+              },
+              'gradient-x': {
+                '0%, 100%': {
+                  'background-size': '200% 200%',
+                  'background-position': 'left center'
+                },
+                '50%': {
+                  'background-size': '200% 200%',
+                  'background-position': 'right center'
+                },
+              },
+              shine: {
+                '0%': { transform: 'translateX(-100%)' },
+                '50%, 100%': { transform: 'translateX(100%)' },
+              },
+              scroll: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-50%)' },
+              },
+              starsMove: {
+                '0%': { backgroundPosition: '0% 0%' },
+                '100%': { backgroundPosition: '100% 100%' },
+              },
+              twinkle: {
+                '0%, 100%': { opacity: '0.2', transform: 'scale(0.8)' },
+                '50%': { opacity: '1', transform: 'scale(1.2)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      /* Custom scrollbar for a sleek look */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #ffffff;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #d1d5db;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #9ca3af;
+      }
+      
+      /* Hide scrollbar for lightbox image wrapper but keep functionality */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-BMPAbfQ4.js"></script>
+</head>
+  <body class="bg-white text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white">
+    <div id="root"></div>
+</body>
+</html>
