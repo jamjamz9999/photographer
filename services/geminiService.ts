@@ -4,12 +4,12 @@ import { Photo, SearchResponse } from '../types';
 // Initialize the Gemini client
 // NOTE: The API key is expected to be in process.env.API_KEY
 // If it is not set, the app will fail gracefully in the UI.
-const apiKey = process.env.API_KEY || '';
-const ai = new GoogleGenAI({ apiKey });
 
 export const searchPhotosWithGemini = async (query: string, photos: Photo[]): Promise<string[]> => {
+  const apiKey = process.env.API_KEY;
+
   if (!apiKey) {
-    console.warn("No API Key found for Gemini.");
+    console.warn("No API Key found for Gemini. Falling back to basic search.");
     // Fallback: basic text match
     const lowerQuery = query.toLowerCase();
     return photos
@@ -22,6 +22,7 @@ export const searchPhotosWithGemini = async (query: string, photos: Photo[]): Pr
   }
 
   try {
+    const ai = new GoogleGenAI({ apiKey });
     // Prepare a simplified list of photos for the context
     const photoContext = photos.map(p => ({
       id: p.id,
@@ -43,31 +44,19 @@ export const searchPhotosWithGemini = async (query: string, photos: Photo[]): Pr
       2. Select the IDs of the photos that best match the intent.
       3. Return ONLY the JSON object matching the schema. Do not add markdown formatting.
     `;
-
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
+      model: 'gemini-1.5-flash',
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
       config: {
         responseMimeType: "application/json",
-        responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            matchedIds: {
-              type: Type.ARRAY,
-              items: {
-                type: Type.STRING
-              }
-            }
-          }
-        }
       }
     });
 
     const jsonStr = response.text;
     if (!jsonStr) return [];
 
-    const result = JSON.parse(jsonStr) as SearchResponse;
-    return result.matchedIds || [];
+    const parsedResult = JSON.parse(jsonStr) as SearchResponse;
+    return parsedResult.matchedIds || [];
 
   } catch (error) {
     console.error("Error searching with Gemini:", error);
